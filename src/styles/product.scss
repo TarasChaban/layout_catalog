@@ -63,12 +63,6 @@
     color: #000;
   }
 
-  .stars {
-    width: 15px;
-    height: 15px;
-    margin-right: 4px;
-  }
-
   &__rating {
     display: grid;
     grid-template-areas: "1 2";
@@ -77,23 +71,27 @@
     padding-bottom: 20px;
   }
 
-  &__rating-stars {
-    display: grid;
-    grid-template-areas: "1 2 3 4 5";
-  }
-
   &__rating-amount {
     font-size: 11px;
     line-height: 13px;
     color: #000;
   }
 
-  .stars-one .stars:first-child,
-  .stars-two .stars:nth-child(-n+2),
-  .stars-three .stars:nth-child(-n+3),
-  .stars-four .stars:nth-child(-n+4),
-  .stars-five .stars:nth-child(-n+5) {
-    background: url(./../images/star-active.svg) no-repeat center;
+  .stars {
+    display: grid;
+    grid-template-areas: "1 2 3 4 5";
+    &__item {
+      margin-right: 4px;
+      width: 15px;
+      height: 15px;
+      background: url(/images/star.svg) center no-repeat;
+    }
+
+    @for $i from 1 through 5 {
+      &--#{$i} :nth-child(-n+#{$i}) {
+        background-image: url(/images/star-active.svg);
+      }
+    }
   }
 
   &__price {
